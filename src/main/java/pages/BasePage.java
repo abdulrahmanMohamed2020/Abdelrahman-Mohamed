@@ -68,6 +68,19 @@ public class BasePage {
         }
     }
 
+    public void actionClick(By locator) {
+        WebElement element = findElement(locator);
+        scrollToElement(element);
+
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        wait.until(ExpectedConditions.visibilityOf(element));
+        try {
+            element.click();
+        } catch (StaleElementReferenceException ex) {
+            findElement(locator).click();
+        }
+    }
+
     private void waitTillTheElementIsVisible(WebElement element) {
         String isVisibleScript = "function isScrolledIntoView(el) { " +
                 "var rect = el.getBoundingClientRect();" +
@@ -88,6 +101,10 @@ public class BasePage {
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
         actions.perform();
+    }
+
+    public String getPageTitle(){
+        return driver.getTitle();
     }
 
 }

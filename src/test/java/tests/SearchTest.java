@@ -11,14 +11,14 @@ public class SearchTest extends BaseTest{
     @Test
     public void verifyPageTitleTest(){
         searchPageObject =  new SearchPage(getDriver());
-        searchPageObject.insertTextAndPressEnter("selenium");
+        searchPageObject.searchByKeyword("selenium");
         assertTrue(searchPageObject.getPageTitle().contains("selenium"));
     }
 
     @Test
     public void verifyTextAfterInsertTest(){
         searchPageObject =  new SearchPage(getDriver());
-        searchPageObject.setSearchText("selenium");
+        searchPageObject.enterTextInSearchBox("selenium");
         assertTrue(searchPageObject.getSearchText().equals("selenium"));
     }
 
@@ -31,14 +31,14 @@ public class SearchTest extends BaseTest{
     @Test
     public void verifyPageTitleWithoutInsertingTextTest(){
         searchPageObject =  new SearchPage(getDriver());
-        searchPageObject.pressEnter();
+        searchPageObject.clickSearchButton();
         assertTrue(searchPageObject.getPageTitle().equals("Google"));
     }
 
     @Test
     public void verifyResultsForTest(){
         searchPageObject =  new SearchPage(getDriver());
-        searchPageObject.insertTextAndPressEnter("fasebook");
+        searchPageObject.enterTextInSearchBox("fasebook");
         assertTrue(searchPageObject.getShowingResultForText().contains("Showing results for"));
         assertTrue(searchPageObject.getSearchInstedForText().contains("Search instead for"));
     }
@@ -47,7 +47,7 @@ public class SearchTest extends BaseTest{
     public void verifyNotExistingDataTest(){
         searchPageObject =  new SearchPage(getDriver());
         String invalidData = "+++++++++++++++";
-        searchPageObject.insertTextAndPressEnter(invalidData);
+        searchPageObject.searchByKeyword(invalidData);
         assertTrue(searchPageObject.getNotExistingDataText()
                 .contains("Your search - "+invalidData+" - did not match any documents."));
     }

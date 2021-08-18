@@ -13,18 +13,17 @@ public class SearchPage extends BasePage{
     private By wrongText = By.className("lnXdpd");
     private By correctText = By.className("spell_orig");
     private By notExistingData = By.className("card-section");
+    private By searchButton = By.className("btnK");
 
-    public void setSearchText(String textToInsert){
+    public void searchByKeyword(String keyword){
         findElement(searchText).clear();
-        findElement(searchText).sendKeys(textToInsert);
-    }
-
-    public void pressEnter(){
+        findElement(searchText).sendKeys(keyword);
         actionClickByKeys(searchText);
     }
 
-    public String getPageTitle(){
-        return driver.getTitle();
+    public void enterTextInSearchBox(String keyword){
+        findElement(searchText).clear();
+        findElement(searchText).sendKeys(keyword);
     }
 
     public String getSearchText(){
@@ -43,12 +42,11 @@ public class SearchPage extends BasePage{
         return findElement(wrongText).getText();
     }
 
-    public void insertTextAndPressEnter(String text){
-        setSearchText(text);
-        pressEnter();
-    }
-
     public String getNotExistingDataText(){
         return findElement(notExistingData).getText();
+    }
+
+    public void clickSearchButton(){
+        actionClick(searchButton);
     }
 }
