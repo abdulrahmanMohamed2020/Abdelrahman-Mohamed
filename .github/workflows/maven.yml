@@ -15,8 +15,6 @@ jobs:
     runs-on: [ubuntu-latest]
 
     steps:
-      - env:
-          BASE_URL: https://www.google.com/?hl=en
       - name: Checkout Code
         uses: actions/checkout@v2
       - name: Set up Native Selenium Grid
@@ -30,3 +28,5 @@ jobs:
       - name: Run all tests
         continue-on-error: true
         run: mvn test
+        env:
+          BASE_URL: https://www.google.com/?hl=en
