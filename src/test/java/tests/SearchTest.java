@@ -46,7 +46,7 @@ public class SearchTest extends BaseTest{
     }
 
     @Test
-    public void verifyInvalidSearchTest(){
+    public void verifyWrongKeywordSearchTest(){
         searchPageObject =  new SearchPage(getDriver());
         searchPageObject.searchByKeyword("fasebook");
         assertTrue(searchPageObject.getShowingResultForText().contains("Showing results for"));
