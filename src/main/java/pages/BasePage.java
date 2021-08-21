@@ -9,9 +9,8 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Iterator;
+
 import java.util.List;
-import java.util.Set;
 
 public class BasePage {
 
@@ -39,6 +38,7 @@ public class BasePage {
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(TIMEOUT)
                 .pollingEvery(POLLING_TIMEOUT)
+                .ignoring(StaleElementReferenceException.class)
                 .ignoring(NoSuchElementException.class);
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }
@@ -56,11 +56,7 @@ public class BasePage {
     }
 
     public void actionClickByKeys(By locator) {
-        WebElement element = findElement(locator);
-        scrollToElement(element);
-
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        wait.until(ExpectedConditions.visibilityOf(element));
+        WebElement element = findElementAndClick(locator);
         try {
             element.sendKeys(Keys.ENTER);
         } catch (StaleElementReferenceException ex) {
@@ -69,11 +65,7 @@ public class BasePage {
     }
 
     public void actionClick(By locator) {
-        WebElement element = findElement(locator);
-        scrollToElement(element);
-
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        wait.until(ExpectedConditions.visibilityOf(element));
+        WebElement element = findElementAndClick(locator);
         try {
             element.click();
         } catch (StaleElementReferenceException ex) {
@@ -81,22 +73,17 @@ public class BasePage {
         }
     }
 
-    private void waitTillTheElementIsVisible(WebElement element) {
-        String isVisibleScript = "function isScrolledIntoView(el) { " +
-                "var rect = el.getBoundingClientRect();" +
-                "var elemTop = rect.top;" +
-                "var elemBottom = rect.bottom;" +
-                "var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);" +
-                "return isVisible;" +
-                "}" +
-                "return isScrolledIntoView(arguments[0]);";
-        wait.until(d -> (Boolean) ((JavascriptExecutor) driver).executeScript(isVisibleScript, element));
+    private WebElement findElementAndClick(By locator){
+        WebElement element = findElement(locator);
+        scrollToElement(element);
+
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        wait.until(ExpectedConditions.visibilityOf(element));
+        return element;
     }
 
     private void scrollToElement(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-
-        waitTillTheElementIsVisible(element);
 
         Actions actions = new Actions(driver);
         actions.moveToElement(element);

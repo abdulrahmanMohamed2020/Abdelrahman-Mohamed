@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import pages.SearchPage;
 
@@ -16,6 +17,15 @@ public class SearchTest extends BaseTest{
     }
 
     @Test
+    public void verifySearchResultsTest(){
+        searchPageObject =  new SearchPage(getDriver());
+        searchPageObject.searchByKeyword("selenium");
+        for(WebElement link : searchPageObject.getSearchResults()){
+            assertTrue(link.getText().toLowerCase().contains("selenium"));
+        }
+    }
+
+    @Test
     public void verifyTextAfterInsertTest(){
         searchPageObject =  new SearchPage(getDriver());
         searchPageObject.enterTextInSearchBox("selenium");
@@ -25,22 +35,22 @@ public class SearchTest extends BaseTest{
     @Test
     public void verifyLogoPresenceTest(){
         searchPageObject =  new SearchPage(getDriver());
-        assertTrue(searchPageObject.isThelogoVisible());
+        assertTrue(searchPageObject.isTheLogoVisible());
     }
 
     @Test
     public void verifyPageTitleWithoutInsertingTextTest(){
         searchPageObject =  new SearchPage(getDriver());
-        searchPageObject.clickSearchButton();
+        searchPageObject.clickOnSearchButton();
         assertTrue(searchPageObject.getPageTitle().equals("Google"));
     }
 
     @Test
-    public void verifyResultsForTest(){
+    public void verifyInvalidSearchTest(){
         searchPageObject =  new SearchPage(getDriver());
-        searchPageObject.enterTextInSearchBox("fasebook");
+        searchPageObject.searchByKeyword("fasebook");
         assertTrue(searchPageObject.getShowingResultForText().contains("Showing results for"));
-        assertTrue(searchPageObject.getSearchInstedForText().contains("Search instead for"));
+        assertTrue(searchPageObject.getSearchInsteadForText().contains("Search instead for"));
     }
 
     @Test
@@ -51,5 +61,4 @@ public class SearchTest extends BaseTest{
         assertTrue(searchPageObject.getNotExistingDataText()
                 .contains("Your search - "+invalidData+" - did not match any documents."));
     }
-
 }
