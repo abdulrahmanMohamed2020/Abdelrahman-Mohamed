@@ -13,12 +13,19 @@ Some automated test cases for Google search
 * You need to be logged in to GitHub as a prerequisite
 * Open the GitHub Actions tab
 * Open the latest workflow run from the list
-## How to run the project main test cases locally:
-* Can find the test cases in the src/test/java folder
-* To start the execution, please make sure that the "execution.type" property is "Local" if you are running locally then right-click on the test suite XML file and click Run As >> TestNG Suit
+## Continuous Integration(CI)
+* A Corn Job to schedule jobs to run automatically at fixed times, dates, or intervals.
+* A web hook has been setup with Github Actions (Java, Maven), and Selenium Tests will execute with docker container during CI.
 * After executing, you can easily generate the **Allure Report** by opening a command-line terminal on the project 
-root path and type 
+root path and type
 ```
-mvn allure:serve
+allure serve "allure-result" path
 ```
-(needs to be able to execute mvn commands);
+(needs to be able to execute allure commands);
+## Steps in github actions to setup the container and run the tests
+* Setup the job to run on [Ubuntu]
+* Checkout Code
+* Setup Native Selenium Grid
+* Set up JDK 1.8
+* Check running containers
+* Run all tests
