@@ -19,9 +19,9 @@ public class SearchTest extends BaseTest{
     @Test
     public void verifySearchResultsTest(){
         searchPageObject =  new SearchPage(getDriver());
-        searchPageObject.searchByKeyword("selenium");
+        searchPageObject.searchByKeyword("google");
         for(WebElement link : searchPageObject.getSearchResults()){
-            assertTrue(link.getText().toLowerCase().contains("selenium"));
+            assertTrue(link.getText().toLowerCase().contains("google"));
         }
     }
 
@@ -41,7 +41,7 @@ public class SearchTest extends BaseTest{
     @Test
     public void verifyPageTitleWithoutInsertingTextTest(){
         searchPageObject =  new SearchPage(getDriver());
-        searchPageObject.clickOnSearchButton();
+        searchPageObject.searchByKeyword("");
         assertTrue(searchPageObject.getPageTitle().equals("Google"));
     }
 

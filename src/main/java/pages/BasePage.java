@@ -56,30 +56,16 @@ public class BasePage {
     }
 
     public void actionClickByKeys(By locator) {
-        WebElement element = findElementAndClick(locator);
-        try {
-            element.sendKeys(Keys.ENTER);
-        } catch (StaleElementReferenceException ex) {
-            findElement(locator).click();
-        }
-    }
-
-    public void actionClick(By locator) {
-        WebElement element = findElementAndClick(locator);
-        try {
-            element.click();
-        } catch (StaleElementReferenceException ex) {
-            findElement(locator).click();
-        }
-    }
-
-    private WebElement findElementAndClick(By locator){
         WebElement element = findElement(locator);
         scrollToElement(element);
 
         wait.until(ExpectedConditions.elementToBeClickable(element));
         wait.until(ExpectedConditions.visibilityOf(element));
-        return element;
+        try {
+            element.sendKeys(Keys.ENTER);
+        } catch (StaleElementReferenceException ex) {
+            findElement(locator).click();
+        }
     }
 
     private void scrollToElement(WebElement element) {

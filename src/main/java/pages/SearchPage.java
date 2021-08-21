@@ -13,7 +13,6 @@ public class SearchPage extends BasePage{
     private By SearchInsteadForText = By.className("spell_orig");
     private By ShowingResultsForText = By.className("gL9Hy");
     private By notExistingData = By.className("card-section");
-    private By searchButton = By.name("btnK");
     private By searchResults = By.cssSelector("h3.LC20lb.DKV0Md");
 
     public SearchPage(WebDriver driver) {
@@ -49,10 +48,6 @@ public class SearchPage extends BasePage{
 
     public String getNotExistingDataText(){
         return findElement(notExistingData).getText();
-    }
-
-    public void clickOnSearchButton(){
-        actionClick(searchButton);
     }
 
     public List<WebElement> getSearchResults(){
