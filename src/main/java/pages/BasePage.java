@@ -22,7 +22,6 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 30);
-        PageFactory.initElements(driver, this);
     }
 
     protected WebElement findElement(By locator) {
@@ -55,14 +54,14 @@ public class BasePage {
         return flag;
     }
 
-    public void actionClickByKeys(By locator) {
+    public void actionClick(By locator) {
         WebElement element = findElement(locator);
         scrollToElement(element);
 
         wait.until(ExpectedConditions.elementToBeClickable(element));
         wait.until(ExpectedConditions.visibilityOf(element));
         try {
-            element.sendKeys(Keys.ENTER);
+            element.click();
         } catch (StaleElementReferenceException ex) {
             findElement(locator).click();
         }

@@ -22,15 +22,15 @@ import java.util.Calendar;
 public class BaseTest {
 
     protected static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
-    final String BASE_URL = System.getenv("BASE_URL");
+    //final String BASE_URL = "https://www.google.com/en";
 
     public CapabilityFactory capabilityFactory = new CapabilityFactory();
 
     @Parameters(value={"browser"})
     @BeforeMethod(alwaysRun = true)
-    public void setUp (@Optional("chrome") String browser) throws MalformedURLException {
+    public void setUp (@Optional("firefox") String browser) throws MalformedURLException {
         driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilityFactory.getCapabilities(browser)));
-        driver.get().get(BASE_URL);
+        //driver.get().get(BASE_URL);
     }
 
     public WebDriver getDriver(){
@@ -44,16 +44,22 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun=true)
     public void catchExceptions(ITestResult result){
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
-        String methodName = result.getName();
         if(!result.isSuccess()){
-            File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
-            try {
-                FileUtils.copyFile(scrFile, new File(("Screenshots/"+methodName+"_"+formater.format(calendar.getTime())+".png")));
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+            takeScreenShot();
         }
     }
+
+    protected void takeScreenShot(){
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
+        String methodName = ITestResult.class.getName();
+        File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(scrFile, new File(("Screenshots/"+methodName+"_"+formater.format(calendar.getTime())+".png")));
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+
 }
