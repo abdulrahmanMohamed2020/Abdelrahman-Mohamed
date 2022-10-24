@@ -1,4 +1,4 @@
-# Automation-Google Search
+# Automation For Some Scenarios
 Some automated test cases for Google search
 ## The main Frameworks included in the project:
 * Selenium Webdriver
