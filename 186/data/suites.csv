@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Dec 25 22:44:41 GMT 2022","Sun Dec 25 22:44:43 GMT 2022","1323","Surefire suite","Surefire test","tests.ToolTipTest","tests.ToolTipTest","captureTheAgeTooltip","Capture The Age Tooltip",""
+"broken","Sun Dec 25 22:44:43 GMT 2022","Sun Dec 25 22:45:13 GMT 2022","30368","Surefire suite","Surefire test","tests.HdfcBankTest","tests.HdfcBankTest","bootstrapDropdownWithDynamicSelection","BootstrapDropdown with dynamic selection",""
+"passed","Sun Dec 25 22:45:14 GMT 2022","Sun Dec 25 22:45:17 GMT 2022","2913","Surefire suite","Surefire test","tests.GoogleSearchTest","tests.GoogleSearchTest","AutoSuggestDropdown","Auto Suggest Dropdown From Google Search",""
+"failed","Sun Dec 25 22:44:38 GMT 2022","Sun Dec 25 22:44:41 GMT 2022","2368","Surefire suite","Surefire test","tests.TwoPlugsTest","tests.TwoPlugsTest","handleAutoCompleteGooglePlaces","Handle Auto Complete Google Places",""
+"passed","Sun Dec 25 22:44:38 GMT 2022","Sun Dec 25 22:44:38 GMT 2022","354","Surefire suite","Surefire test","tests.HeroKuAppTest","tests.HeroKuAppTest","handleAuthenticatedPopUps","Handle Authenticated pop-ups",""
