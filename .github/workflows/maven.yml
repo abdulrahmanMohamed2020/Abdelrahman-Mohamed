@@ -67,4 +67,4 @@ jobs:
           context: 'Test report'
           state: 'success'
           sha: ${{github.event.pull_request.head.sha || github.sha}}
-          target_url:  https://github.com/abdulrahmanMohamed2020/Abdelrahman-Mohamed-E2E.pages.github.io/${{ github.run_number }}
+          target_url:  https://abdulrahmanmohamed2020.github.io/Abdelrahman-Mohamed-E2E/${{ github.run_number }}
