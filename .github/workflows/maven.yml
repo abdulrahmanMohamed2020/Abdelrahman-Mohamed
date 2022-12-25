@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: '16'
       - name: Set up Native Selenium Grid
-        run: docker-compose -f docker-compose.yml up -d
+        run: docker-compose up -d
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
