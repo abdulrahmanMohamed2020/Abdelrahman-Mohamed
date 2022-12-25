@@ -28,7 +28,7 @@ public class BaseTest {
 
     @Parameters(value={"browser"})
     @BeforeMethod(alwaysRun = true)
-    public void setUp (@Optional("firefox") String browser) throws MalformedURLException {
+    public void setUp (@Optional("chrome") String browser) throws MalformedURLException {
         driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilityFactory.getCapabilities(browser)));
         //driver.get().get(BASE_URL);
     }
