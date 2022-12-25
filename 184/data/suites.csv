@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Dec 25 22:36:30 GMT 2022","Sun Dec 25 22:36:31 GMT 2022","1169","Surefire suite","Surefire test","tests.ToolTipTest","tests.ToolTipTest","captureTheAgeTooltip","Capture The Age Tooltip",""
+"passed","Sun Dec 25 22:36:26 GMT 2022","Sun Dec 25 22:36:27 GMT 2022","364","Surefire suite","Surefire test","tests.HeroKuAppTest","tests.HeroKuAppTest","handleAuthenticatedPopUps","Handle Authenticated pop-ups",""
+"failed","Sun Dec 25 22:36:27 GMT 2022","Sun Dec 25 22:36:30 GMT 2022","2714","Surefire suite","Surefire test","tests.TwoPlugsTest","tests.TwoPlugsTest","handleAutoCompleteGooglePlaces","Handle Auto Complete Google Places",""
