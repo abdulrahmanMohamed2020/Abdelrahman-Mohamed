@@ -44,4 +44,3 @@ services:
       - "9002:5900"
     links:
       - hub
-      -
