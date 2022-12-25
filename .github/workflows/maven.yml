@@ -17,6 +17,10 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
       - name: Set up Native Selenium Grid
         run: docker-compose up -d
       - name: Set up JDK 17
