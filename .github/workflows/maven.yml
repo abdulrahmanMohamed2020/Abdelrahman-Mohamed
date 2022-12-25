@@ -15,6 +15,10 @@ jobs:
     runs-on: [ubuntu-latest]
 
     steps:
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
       - name: Set up Native Selenium Grid
         run: docker-compose -f docker-compose.yml up --scale chrome=4 --scale firefox=0 -d
       - name: Set up JDK 17
