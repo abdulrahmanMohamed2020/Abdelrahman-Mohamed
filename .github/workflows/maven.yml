@@ -28,7 +28,7 @@ jobs:
         run: docker ps
       - name: Run all tests
         continue-on-error: true
-        run: mvn test
+        run: mvn clean test -DsuiteXmlFile=testng.xml
         #env:
           #BASE_URL: https://www.google.com/
           
@@ -65,6 +65,6 @@ jobs:
         with: 
           authToken: ${{secrets.GITHUB_TOKEN}}
           context: 'Test report'
-          #state: 'success'
+          state: 'success'
           sha: ${{github.event.pull_request.head.sha || github.sha}}
           target_url:  https://abdulrahmanmohamed2020.github.io/Abdelrahman-Mohamed-E2E/${{ github.run_number }}
