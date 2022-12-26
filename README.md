@@ -29,3 +29,4 @@ allure serve "allure-result" path
 * Set up JDK 1.8
 * Check running containers
 * Run all tests
+* Post the Allure Report to github pages
