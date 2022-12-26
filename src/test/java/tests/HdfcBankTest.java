@@ -3,12 +3,14 @@ package tests;
 import org.testng.annotations.Test;
 import pages.HdfcBankPage;
 
+import static org.testng.Assert.assertTrue;
+
 public class HdfcBankTest extends BaseTest{
 
     HdfcBankPage hdfcBankPage;
 
-    @Test(description = "BootstrapDropdown with dynamic selection")
-    public void bootstrapDropdownWithDynamicSelection(){
+    @Test(description = "Verify the user can select product from drop-down menu")
+    public void verifyUserCanSelectProduct(){
         getDriver().get("https://www.hdfcbank.com/");
         hdfcBankPage =  new HdfcBankPage(getDriver());
 
@@ -17,6 +19,7 @@ public class HdfcBankTest extends BaseTest{
 
         hdfcBankPage.selectProductType(productType);
         hdfcBankPage.selectProduct(product);
-        takeScreenShot();
+
+        assertTrue(hdfcBankPage.isProductVisible(),"The Product drop-down is not visible");
     }
 }

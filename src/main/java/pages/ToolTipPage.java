@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -14,6 +15,7 @@ public class ToolTipPage extends BasePage{
         super(driver);
     }
 
+    @Step("Hover over the Age Text Box")
     public void hoverOverTheAgeTextBox() {
         driver.switchTo().frame(findElement(demoFrame));
 

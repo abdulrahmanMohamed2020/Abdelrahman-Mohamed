@@ -21,7 +21,7 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 30);
+        wait = new WebDriverWait(driver, TIMEOUT);
     }
 
     protected WebElement findElement(By locator) {
@@ -42,10 +42,10 @@ public class BasePage {
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }
 
-    protected boolean elementVisible(By locator, int timeOut) {
+    protected boolean elementVisible(By locator) {
         boolean flag;
         try {
-            WebDriverWait wait = new WebDriverWait(driver, timeOut);
+            WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
             wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
             flag = true;
         } catch (Exception ex) {
@@ -74,9 +74,4 @@ public class BasePage {
         actions.moveToElement(element);
         actions.perform();
     }
-
-    public String getPageTitle(){
-        return driver.getTitle();
-    }
-
 }

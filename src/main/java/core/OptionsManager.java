@@ -12,7 +12,6 @@ public class OptionsManager {
         options.addArguments("--start-maximized");
         options.addArguments("--ignore-certificate-errors");
         options.addArguments("--disable-popup-blocking");
-        options.addArguments("--headless");
         return options;
     }
 
@@ -26,8 +25,6 @@ public class OptionsManager {
         //Use No Proxy Settings
         profile.setPreference("network.proxy.type", 0);
         //Set Firefox profile to capabilities
-        options.setHeadless(true);
-        options.setCapability(FirefoxDriver.PROFILE, profile);
         return options;
     }
 }

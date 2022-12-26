@@ -9,7 +9,7 @@ public class ToolTipTest extends BaseTest{
 
     ToolTipPage toolTipPage;
 
-    @Test(description = "Capture The Age Tooltip")
+    @Test(description = "Verify The Age Tooltip is shown correctly")
     public void captureTheAgeTooltip(){
         getDriver().get("https://jqueryui.com/tooltip/");
         toolTipPage =  new ToolTipPage(getDriver());
@@ -18,7 +18,6 @@ public class ToolTipTest extends BaseTest{
 
         String expectedTextResult = "We ask for your age only for statistical purposes.";
 
-        takeScreenShot();
         assertEquals(toolTipPage.getTooltipMessage(), expectedTextResult);
     }
 }

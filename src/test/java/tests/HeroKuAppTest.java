@@ -9,9 +9,9 @@ public class HeroKuAppTest extends BaseTest{
 
     private HeroKuAppPage heroKuAppPage;
 
-    @Test(description = "Handle Authenticated pop-ups")
+    @Test(description = "Verify the Authenticated user pop-ups")
     public void handleAuthenticatedPopUps(){
-        getDriver().get("https://admin:admin@the-internet.herokuapp.com/basic_auth");
+        getDriver().get("https://admin:admin@the-internet.herokuapp.com/basic_auth"); //passing the username and password
         heroKuAppPage =  new HeroKuAppPage(getDriver());
 
         String expectedMessage = "Congratulations! You must have the proper credentials.";

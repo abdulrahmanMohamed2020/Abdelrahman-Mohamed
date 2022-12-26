@@ -6,14 +6,16 @@ import pages.GoogleSearchPage;
 
 import java.util.List;
 
+import static org.testng.AssertJUnit.assertEquals;
+
 public class GoogleSearchTest extends BaseTest{
 
     private GoogleSearchPage googleSearchPage;
     private static String SEARCH_KEYWORD = "java tutorial";
     private static String TEXT_LINK = "w3schools";
 
-    @Test(description = "Auto Suggest Dropdown From Google Search")
-    public void AutoSuggestDropdown(){
+    @Test(description = "Verify the user is redirected to the w3school page when clicking on the link")
+    public void verifyUserDirectionAfterClickingOnLink(){
         getDriver().get("https://www.google.com/webhp?hl=en");
         googleSearchPage =  new GoogleSearchPage(getDriver());
         googleSearchPage.searchByKeyword(SEARCH_KEYWORD);
@@ -22,7 +24,7 @@ public class GoogleSearchTest extends BaseTest{
         List<WebElement> searchResultsList = googleSearchPage.getSearchResults();
 
         googleSearchPage.clickOnTheLinkContain(TEXT_LINK);
-        takeScreenShot();
+        assertEquals(getDriver().getCurrentUrl(), "https://www.w3schools.com/java/default.asp");
     }
 
 }

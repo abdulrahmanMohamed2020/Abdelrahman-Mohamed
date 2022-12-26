@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -14,15 +15,18 @@ public class TwoPlugsPage extends BasePage{
         super(driver);
     }
 
+    @Step("Click on the Live Posting button")
     public void clickOnLivePostingButton(){
         actionClick(livePostingButton);
     }
 
+    @Step("Enter the search keyword")
     public void searchByKeyword(String keyword){
         findElement(mapTextBox).clear();
         findElement(mapTextBox).sendKeys(keyword);
     }
 
+    @Step("Select the search keyword and hit Enter key")
     public void selectTheSearchKeyword(){
         findElement(item).click();
         findElement(mapTextBox).sendKeys(Keys.ENTER);

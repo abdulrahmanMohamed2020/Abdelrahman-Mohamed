@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ public class GoogleSearchPage extends BasePage {
         super(driver);
     }
 
+    @Step("Enter the search keyword")
     public void searchByKeyword(String keyword){
         findElement(searchText).clear();
         findElement(searchText).sendKeys(keyword, Keys.ENTER);
@@ -24,6 +26,7 @@ public class GoogleSearchPage extends BasePage {
         return findElements(searchResults);
     }
 
+    @Step("Click on the link contains")
     public void clickOnTheLinkContain(String textLink) {
         for(WebElement element : getSearchResults()){
             if (element.getText().toLowerCase().contains(textLink)) {

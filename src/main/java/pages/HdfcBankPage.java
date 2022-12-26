@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,12 +17,14 @@ public class HdfcBankPage extends BasePage{
         super(driver);
     }
 
+    @Step("Select the product type")
     public void selectProductType(String productType) {
         Select select = _captureAllItems(productTypeDropDown);
 
         select.selectByVisibleText(productType);
     }
 
+    @Step("Select the product")
     public void selectProduct(String productType) {
         Select select = _captureAllItems(productDropDown);
 
@@ -35,5 +38,9 @@ public class HdfcBankPage extends BasePage{
 
         System.out.println(dropdownValues);
         return select;
+    }
+
+    public boolean isProductVisible() {
+        return elementVisible(productDropDown);
     }
 }
