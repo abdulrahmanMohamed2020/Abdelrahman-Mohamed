@@ -65,6 +65,6 @@ jobs:
         with: 
           authToken: ${{secrets.GITHUB_TOKEN}}
           context: 'Test report'
-          #state: 'success'
+          state: 'success'
           sha: ${{github.event.pull_request.head.sha || github.sha}}
           target_url:  https://abdulrahmanmohamed2020.github.io/Abdelrahman-Mohamed-E2E/${{ github.run_number }}
