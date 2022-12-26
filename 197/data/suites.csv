@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Mon Dec 26 02:29:39 GMT 2022","Mon Dec 26 02:30:10 GMT 2022","30785","Surefire suite","Surefire test","tests.HdfcBankTest","tests.HdfcBankTest","verifyUserCanSelectProduct","Verify the user can select product from drop-down menu",""
+"passed","Mon Dec 26 02:29:24 GMT 2022","Mon Dec 26 02:29:25 GMT 2022","578","Surefire suite","Surefire test","tests.HeroKuAppTest","tests.HeroKuAppTest","handleAuthenticatedPopUps","Verify the Authenticated user pop-ups",""
+"passed","Mon Dec 26 02:29:35 GMT 2022","Mon Dec 26 02:29:36 GMT 2022","1680","Surefire suite","Surefire test","tests.ToolTipTest","tests.ToolTipTest","captureTheAgeTooltip","Verify The Age Tooltip is shown correctly",""
+"passed","Mon Dec 26 02:29:28 GMT 2022","Mon Dec 26 02:29:32 GMT 2022","4003","Surefire suite","Surefire test","tests.TwoPlugsTest","tests.TwoPlugsTest","handleAutoCompleteGooglePlaces","Handle Auto Complete Google Places",""
+"passed","Mon Dec 26 02:30:12 GMT 2022","Mon Dec 26 02:30:15 GMT 2022","2495","Surefire suite","Surefire test","tests.GoogleSearchTest","tests.GoogleSearchTest","verifyUserDirectionAfterClickingOnLink","Verify the user is redirected to the w3school page when clicking on the link",""
